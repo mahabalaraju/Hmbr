@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+   
+  web:
+   image: spring
+   ports:
+   - 2323:9090
+   networks:
+      - mynetwork
+   container_name: web_container
+   environment:
+    SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/webdb
+    SPRING_DATASOURCE_USERNAME: mahabala
+    SPRING_DATASOURCE_PASSWORD: raju
+   
+   depends_on:
+     - database
+     
+    
+     
+  database:
+   image: mysql
+   restart: always
+   networks:
+   - mynetwork
+   volumes:
+   - bookstoreDb:/var/lib/mysql
+   ports:
+   - 2322:3306
+   container_name: database_container
+   environment:
+    MYSQL_ROOT_PASSWORD: root-123
+    MYSQL_USER: mahabala
+    MYSQL_PASSWORD: raju
+    MYSQL_DATABASE:	webdb
+    
+   healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
+
+networks:
+    mynetwork:
+     external: true
+volumes:
+   bookstoreDb:

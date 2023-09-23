@@ -1,0 +1,17 @@
+
+version: "3.8"
+services:
+ micro1:
+  image: micro
+  build: .
+  ports:
+  - 2333:2311
+  networks:
+  - mynetwork
+  container_name: micro_container
+networks:
+ mynetwork:
+  name: mynetwork
+  external: true
+  
+  

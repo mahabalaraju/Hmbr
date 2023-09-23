@@ -1,0 +1,16 @@
+
+version: "3.8"
+services:
+ emp:
+  image: employee
+  ports:
+  - 2333:2321
+  networks:
+  - mynetwork
+  container_name: empcontainer
+networks:
+ mynetwork:
+  name: mynetwork
+  external: true
+  
+  

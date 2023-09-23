@@ -1,0 +1,5 @@
+com\bookstore\entity\books.class
+com\bookstore\BookstoreApplication.class
+com\bookstore\controller\bookcontroller.class
+com\bookstore\repo\bookdepo.class
+com\bookstore\Exception\exception.class

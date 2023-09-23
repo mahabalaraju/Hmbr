@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>springboot thymeleaf form</title>
+
+</head>
+<body>
+	<div align="center">
+		<h1>spring boot thymeleaf</h1>
+		<hr>
+		<form  action="#" th:each="@{/register}"  th:object="${user}">
+		<label>Full Name</label>
+<input type="text" th:field="*{name}"/>
+<button type="submit">register</button>>
+</form>
+	</div>
+</body>
+</html>
